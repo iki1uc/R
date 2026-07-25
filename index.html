@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Vector-Projekt</title>
+  <title>Axiom – Vector</title>
   <style>
     body { font-family: Arial; margin: 40px; }
     pre { background: #eee; padding: 20px; }
@@ -10,20 +10,30 @@
 </head>
 
 <body>
-  <h1>Vector-Projekt</h1>
-  <pre id="vector">Lade Daten…</pre>
+  <h1>Axiom – Vector</h1>
+
+  <h3>README</h3>
+  <pre id="readme">Lade README…</pre>
+
+  <h3>ID</h3>
+  <pre id="idfile">Lade ID…</pre>
+
+  <h3>Vektor</h3>
+  <pre id="vector">Lade Vektor…</pre>
+
+  <h3>Achse</h3>
+  <pre id="axis">Lade Achse…</pre>
+
+  <h3>Koordinaten</h3>
+  <pre id="coords">Lade Koordinaten…</pre>
 
   <script>
-    fetch("geo/vector.json")
-      .then(r => r.json())
-      .then(data => {
-        document.getElementById("vector").innerText =
-          JSON.stringify(data, null, 2);
-      })
-      .catch(err => {
-        document.getElementById("vector").innerText =
-          "Fehler: Datei nicht gefunden.";
-      });
+    fetch("README.md").then(r => r.text()).then(t => readme.innerText = t);
+    fetch("id.html").then(r => r.text()).then(t => idfile.innerText = t);
+    fetch("geo/vector.json").then(r => r.json()).then(t => vector.innerText = JSON.stringify(t, null, 2));
+    fetch("geo/axis.json").then(r => r.json()).then(t => axis.innerText = JSON.stringify(t, null, 2));
+    fetch("geo/coords.json").then(r => r.json()).then(t => coords.innerText = JSON.stringify(t, null, 2));
   </script>
+
 </body>
 </html>
