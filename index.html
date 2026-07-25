@@ -1,32 +1,8 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8">
-  <title>RTpi-Vector – Stabilisationsachse</title>
-  <style>
-    body { font-family: Arial; margin: 40px; }
-    pre { background: #f0f0f0; padding: 20px; }
-  </style>
-</head>
-
-<body>
-  <h1>RTpi-Vector – Stabilisationsachse</h1>
-  <h2>ID: RTPI-VEC-AXIS-001-DE-HH</h2>
-
-  <p>Dies ist die Hauptseite des RTpi-Vector Projekts.  
-     Alle Geo‑Daten, Vektor‑Daten und Achsen‑Informationen werden aus dem Ordner <code>/geo</code> geladen.</p>
-
-  <h3>Vektor-Daten</h3>
-  <pre id="vector">Lade Daten…</pre>
-
-  <script>
-    fetch("geo/vector.json")
-      .then(r => r.json())
-      .then(data => {
-        document.getElementById("vector").innerText =
-          JSON.stringify(data, null, 2);
-      });
-  </script>
-
-</body>
-</html>
+<script>
+fetch("geo/vector.json")
+  .then(r => r.json())
+  .then(data => {
+    document.getElementById("vector").innerText =
+      JSON.stringify(data, null, 2);
+  });
+</script>
