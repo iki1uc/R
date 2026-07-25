@@ -1,8 +1,29 @@
-<script>
-fetch("geo/vector.json")
-  .then(r => r.json())
-  .then(data => {
-    document.getElementById("vector").innerText =
-      JSON.stringify(data, null, 2);
-  });
-</script>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Vector-Projekt</title>
+  <style>
+    body { font-family: Arial; margin: 40px; }
+    pre { background: #eee; padding: 20px; }
+  </style>
+</head>
+
+<body>
+  <h1>Vector-Projekt</h1>
+  <pre id="vector">Lade Daten…</pre>
+
+  <script>
+    fetch("geo/vector.json")
+      .then(r => r.json())
+      .then(data => {
+        document.getElementById("vector").innerText =
+          JSON.stringify(data, null, 2);
+      })
+      .catch(err => {
+        document.getElementById("vector").innerText =
+          "Fehler: Datei nicht gefunden.";
+      });
+  </script>
+</body>
+</html>
